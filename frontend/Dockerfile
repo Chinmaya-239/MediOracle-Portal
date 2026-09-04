@@ -1,18 +1,12 @@
 FROM node:18-alpine
-
 WORKDIR /app
-
 # Copy package files
 COPY package*.json ./
-
 # Install dependencies
-RUN npm install
-
+RUN npm install --legacy-peer-deps
 # Copy app files
 COPY . .
-
 # Expose port
 EXPOSE 3000
-
 # Start app
 CMD ["npm", "start"]
